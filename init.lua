@@ -1,4 +1,4 @@
-print("this is a test, ignore me im totally harmless lol")
+core.chat_send_all("tagtools loaded")
 
 invisible_spec = {color={a=0,r=0,g=0,b=0}, bgcolor={a=0,r=255,g=255,b=255}}
 visible_spec = {color={a=255, r=255, g=255, b=255}, bgcolor={a=140, r=0, g=0, b=0}}
@@ -28,6 +28,7 @@ core.register_chatcommand("hideme", {
         if core.get_player_by_name(name) then
             local p = core.get_player_by_name(name)
             p:set_nametag_attributes(invisible_spec)
+            core.chat_send_player(name, "you are hiding now :D")
         end
         --end
     end
@@ -47,6 +48,7 @@ core.register_chatcommand("showme", {
         if core.get_player_by_name(name) then
             local p = core.get_player_by_name(name)
             p:set_nametag_attributes(visible_spec)
+            core.chat_send_player(name, "you are visible now :D")
         end
         --end
     end
@@ -64,6 +66,10 @@ core.register_chatcommand("showplayer", {
         if core.get_player_by_name(param) then
             local p = core.get_player_by_name(param)
             p:set_nametag_attributes(visible_spec)
+
+            core.chat_send_player(name, param .. " is visible now :D")
+            
+            core.chat_send_player(param, "you are visible now :D")
         end
     end
 })
@@ -80,6 +86,10 @@ core.register_chatcommand("hideplayer", {
         if core.get_player_by_name(param) then
             local p = core.get_player_by_name(param)
             p:set_nametag_attributes(invisible_spec)
+            
+            core.chat_send_player(name, param .. " is hidden now :D")
+            
+            core.chat_send_player(param, "you are hidden now :D")
         end
     end
 })
